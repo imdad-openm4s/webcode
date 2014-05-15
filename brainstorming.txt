@@ -1,0 +1,37 @@
+-> Profiles
+	Profile_ID, Registration#, Name, Education, Occupation, Address, Contact#, Status, Designation, Nazam, Active?
+
+-> MM
+	MM_Entry_#, Name, Referrer, Rabtakar, J.Daee, Daee, S.Daee, Comments, Selected/Promoted/Dropped, Selection_Date, Promotion_Date, Dropped Date
+
+-> BM
+	Registration#, Name, Rabtakar, J.Daee, Daee, S.Daee, Comments, Entry_Date, Promotion_Date, Dropped Date
+
+-> HAMH
+	Registration#, Name, Rabtakar, J.Daee, Daee, S.Daee, Place_of_Class, Comments, Entry_Date, Promotion_Date, Dropped Date
+
+-> Forum
+	Registration#, Name, Contact#, Place_of_Class, Entry_Date, Promotion_Date
+
+-> Circle
+	Registration#, Name, Contact#, Place_of_Class, Entry_Date, Promotion_Date
+
+-> Meetings
+	Registration#, Status(MM/BM/HDMH), Name, Date(DDMMYY - INDEX), Duration, N?, Remarks/Comments
+
+-> HAMH-Class
+	Date, Duration, N?, Topic, Speaker, Participants, Attendance, Comments
+
+-> Forum-Class
+	Place_of_Class, Date, Duration, Topic, Semester, Muhazir, Participants, Attendance, Comments
+
+-> Circle-Class
+	Place_of_Class, Date, Duration, Topic, Semester, Muhazir, Participants, Attendance, Comments
+
+-> Roles <-----> Users
+	Define roles and assign them to different users.
+	Roles:
+		Sadar, N.U, M_Committee, D_Committee, 
+
+-> Issues:
+	How would I enlist all those meetings/classes in which a specific participant was present/absent?

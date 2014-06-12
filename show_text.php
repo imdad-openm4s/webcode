@@ -3,6 +3,7 @@
 <head>
 	<?php header('Content-type: text/html; charset=utf-8'); ?>
 	<title>Show Profile</title>
+	<link rel="stylesheet" type="text/css" href="./urdufont.css" media="all" />
 </head>
 <body>
 	<?php
@@ -40,16 +41,26 @@
 			echo "Query was successful! <br /><br />";
 	?>
 
-		<table border="1px" cellspacing="3" cellpadding="5" align="right"><tr><td align="right" width="auto" height="auto">حیثیت</td><td align="right" width="auto" height="auto">نام</td></tr>
+	<h1>میٹنگ نمبر 1</h1>
+	<br />
+
+	<table id="utext" cellspacing="1" cellpadding="2" align="right"><tr id="header"><td align="right" width="auto" height="auto">حیثیت</td><td align="right" width="auto" height="auto">نام</td></tr>
 
 	<?php
 
 		//fetch and find the latest entry no.
+		$i = 1; // for separtating each individual record (row-wise)
 		while($row = mysql_fetch_array($result)) {
-	  	echo "<tr>";
-	  	echo "<td align=\"right\">" . $row['Status'] . "</td>";
-	  	echo "<td align=\"right\">" . $row['Name'] . "</td>";
-	  	echo "</tr>";
+			if($i>='2' && $i%2=='0') {
+				$oddrow = " id=\"oddrow\"";
+			} else {
+				$oddrow = "id=\"evenrow\"";
+			}
+		  	echo "<tr ".$oddrow.">";
+		  	echo "<td align=\"right\">" . $row['status'] . "</td>";
+		  	echo "<td align=\"right\">" . $row['name'] . "</td>";
+		  	echo "</tr>";
+		  	$i = $i+1;
 		}
 
 		echo "</table>";

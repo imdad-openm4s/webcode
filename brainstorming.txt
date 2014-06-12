@@ -1,37 +1,87 @@
--> Profiles
-	Profile_ID, Registration#, Name, Education, Occupation, Address, Contact#, Status, Designation, Nazam, Active?
+[
+	-> Profiles
+		Profile_ID, UserID, Registration#, Name, Education, Occupation, Address, Contact#, Responsibility(Sadar, NU, etc.), Level(JP, Circle, Forum, etc.), Nazam(IDs of SubUnit/Unit/Halqa/ShehriTanzim/Zone/Region/Province), Active?
 
--> MM
-	MM_Entry_#, Name, Referrer, Rabtakar, J.Daee, Daee, S.Daee, Comments, Selected/Promoted/Dropped, Selection_Date, Promotion_Date, Dropped Date
+	-> MM
+		MM_Entry_#, Name, Referrer, Rabtakar, J.Daee, Daee, S.Daee, Comments, Selected/Promoted/Dropped, Selection_Date, Promotion_Date, Dropped Date
 
--> BM
-	Registration#, Name, Rabtakar, J.Daee, Daee, S.Daee, Comments, Entry_Date, Promotion_Date, Dropped Date
+	-> BM
+		ProfileID, Name, Rabtakar, J.Daee, Daee, S.Daee, Comments, Entry_Date, Promotion_Date, Dropped Date
 
--> HAMH
-	Registration#, Name, Rabtakar, J.Daee, Daee, S.Daee, Place_of_Class, Comments, Entry_Date, Promotion_Date, Dropped Date
+	-> HAMH
+		ProfileID, Name, Rabtakar, J.Daee, Daee, S.Daee, Place_of_Class, Comments, Entry_Date, Promotion_Date, Dropped Date
 
--> Forum
-	Registration#, Name, Contact#, Place_of_Class, Entry_Date, Promotion_Date
+	-> Forum
+		ProfileID, Name, Contact#, Place_of_Class, Entry_Date, Promotion_Date
 
--> Circle
-	Registration#, Name, Contact#, Place_of_Class, Entry_Date, Promotion_Date
+	-> Circle
+		ProfileID, Name, Contact#, Place_of_Class, Entry_Date, Promotion_Date
 
--> Meetings
-	Registration#, Status(MM/BM/HDMH), Name, Date(DDMMYY - INDEX), Duration, N?, Remarks/Comments
+	-> Same as above for Rabtakaran, J.Deen, Daeen, S.Daeen
 
--> HAMH-Class
-	Date, Duration, N?, Topic, Speaker, Participants, Attendance, Comments
+	-> Meetings
+		ProfileID, Type(MM/BM/HDMH), Name, Date(DDMMYY - INDEX), Duration, N?, Remarks/Comments
 
--> Forum-Class
-	Place_of_Class, Date, Duration, Topic, Semester, Muhazir, Participants, Attendance, Comments
+	-> HAMH-Class
+		Date, Duration, N?, Topic, Speaker, Participants_Names, Participants_Absent, Status(Done/Cancelled), Comments
 
--> Circle-Class
-	Place_of_Class, Date, Duration, Topic, Semester, Muhazir, Participants, Attendance, Comments
+	-> Forum-Class
+		Place_of_Class, Type(Forum/Circle), Date, Duration, Topic, Semester, Muhazir, Participants_Names, Participants_Absent, Status(Done/Cancelled), Comments
 
--> Roles <-----> Users
-	Define roles and assign them to different users.
-	Roles:
-		Sadar, N.U, M_Committee, D_Committee, 
+	-> Circle-Class (may be removed if type field is set in the above table i.e. forum-class)
+		Place_of_Class, Date, Duration, Topic, Semester, Muhazir, Participants_Names, Participants_Absent, Status(Done/Cancelled), Comments
+
+	-> Privileged-Users
+		PUserID, Login_Name, Password, SecretQuestion, SecretAnswer, Status(Active/Disabled), Comments
+
+	-> Attendances
+		ProfileID, Type(HAMH-Class/Forum-Class/Circle-Class/R.I.Meeting/D.I.Meeting,Tarbiati-Class,Rabta-Tarbiati-Class), Date, Individual_Attendance, Reason(in-case-of-absentee), Comments
+
+	-> Create tables for Rabta+Dawati Tarbiyati Classes, Rabta+Dawati Intizami Meetings, Intizami Meeting, Aamla Meeting, etc.
+
+	-> Cabinets
+		CabinetID, Nazam(SubUnit/Unit/Halqa/ShehriTanzim/Zone/Region/Province), Members, Status(Acting/Non-Functional), Formation_Date, Update_Date(Suspension/Dissolution), Comments
+
+	-> Sub-Units/Units
+		ID, Type(SubUnit/Unit) HalqaID, ShehriTanzimID, ZoneID, RegionID, ProvinceID, Name, Responsible_Members, Date_of_Creation, State(Exists/Do_Not_Exist_Anymore), Comments
+
+	-> Halqa
+		HalqaID, ShehriTanzimID, ZoneID, RegionID, ProvinceID, Name, Cabinet, Date_of_Creation, State(Exists/Do_Not_Exist_Anymore), Comments
+
+	-> ShehriTanzim
+		ZoneID, RegionID, ProvinceID, Name, Cabinet, Date_of_Creation, State(Exists/Do_Not_Exist_Anymore), Comments
+
+	-> Zone
+		ZoneID, RegionID, ProvinceID, Name, Cabinet, Date_of_Creation, State(Exists/Do_Not_Exist_Anymore), Comments
+
+	-> Region
+		RegionID, ProvinceID, Name, Cabinet, Date_of_Creation, State(Exists/Do_Not_Exist_Anymore), Comments
+
+	-> Roles
+		RoleID, ScopeID, PUserID, RName, Description, Status(Active/Disabled), Comments
+
+	-> Permissions
+		PermissionID, RoleID, PUserID, Description, Status(Active/Disabled), Comments
+
+] // queries for these above tables have been written in "./install/table_setup.sql"
+
+-> Scope
+	ScopeID, CabinetID, PUserID, SName(Halqa, Zone, etc.), Type(Administration, Dawat, Maliyat, Tarbiyat, etc.), Description, Comments
+
+	
+
+-> Kind of resolved
+	{(
+		-> Roles <-----> Users
+			Define roles and assign them to different users.
+			Roles:
+				Sadar, N.U, M_Committee, D_Committee,
+	)}
 
 -> Issues:
 	How would I enlist all those meetings/classes in which a specific participant was present/absent?
+	What if a new sub-level (Halqa, Zone, etc. are sub-levels) is needed to be added to the system? How would we encounter that?
+
+-> Suggestions
+	Replace Scope table with Cabinet_Members table and define different categories like Admin, Dawat, etc. and link that table to "Roles" and "Cabinets" tables. In this way it would be more secure.
+	Create another table for setting marakiz for forum, circle, house classes, etc.

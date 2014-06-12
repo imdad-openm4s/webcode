@@ -11,5 +11,10 @@
 		<input type="submit" name="submit_btn" value="Go!" />
 	</form>
 	<button onclick="location.href = './show_text.php';" id="myButton">Show Profile</button>
+	<br /><br /><br />
+	<?php
+		echo "Today is :".date('Y-m-d');
+		echo "<br>";
+	?>
 </body>
 </html>

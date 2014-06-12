@@ -1,0 +1,23 @@
+Structural_Units
+	Markaz, Provincial, Regional, Zonal, Shehri_Nazam, Halqa, Unit, Sub_Unit, Projects_Committee
+
+Modules
+	Administration, Dawat, Maliyat, Tarbiyat, Rahimia, Nashriyat
+
+Activities
+	Aamla Meeting, Intizami_Meetings(General, Dawati, Rabta), Tarbiyati_Classes(Rabta, Dawati), Nisabi_Classes(Forum, Circle), House_Classes, Dawati_Meetings(House, Baqaida, Mujawiza)
+
+Afraadi Quwwat
+	Maduen(Mujawiza, Baqaida, House), Sharik_Forum, Sharik_Circle, Jaiza_Pass, Faculty
+
+Afraadi Quwwat (Role based distribution)
+	Rabtakaran, J_Daeen, Daeen, S_Daeen, Muhazireen(House, Forum, Circle, Rabta_Tarbiyati_Class, Dawati_Tarbiyati_Class_4_J_Daeen_&_Daeen, Dawati_Tarbiyati_Class_4_S_Daeen)
+
+Committees
+	Intizami(Sadar, Nazim_Umoomi), Dawati, Maliyati, Tarbiyati, Rahimia, Nashriyati
+
+Responsibilities (Administration)
+	
+
+Responsibilities (Dawati_Committee)
+	Maintain records of madun(mujawiza, baqaida, house), maintain record of meetings with maduen(mujawiza, baqaida, house), maintain record of house classes.

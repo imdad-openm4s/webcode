@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'ufont';
+	/*src: url("http://localhost/testing/tfwp/fonts/alfars-9-badr-regular-1.ttf");*/
+	/*src: url("http://localhost/testing/tfwp/fonts/nastaleeq-like-regular-1.ttf");*/
+	/*src: url("http://localhost/testing/tfwp/fonts/akbar-regular-1");*/
+	/*src: url("http://localhost/testing/tfwp/fonts/alqalam-fawad-bold-regular-1.ttf");*/
+	/*src: url("http://localhost/testing/tfwp/fonts/alqalam-fawad-light-regular-1.ttf");*/
+	src: url("http://localhost/testing/tfwp/fonts/xb-kayhan-navaar-regular-1.ttf");
+}
+h1 {
+	font-family: ufont;
+	color: rgb(100,175,225);
+	font-size: 45pt;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+#utext {
+	font-family: ufont;
+	font-size: 13pt;
+	/*color: blue;*/
+	/*font-style: italic;*/
+	/*font-weight: bold;*/
+	border-top: solid 1px black;
+	/*border-left: solid 1px black;*/
+	border-right: solid 1px black;
+	border-bottom: solid 1px black;
+}
+#utext tr:first-child td, #oddrow td{
+	border-bottom: solid 1px black;
+}
+#evenrow td {
+	border-bottom: dashed 1px black;
+}
+#utext tr td {
+	border-left: solid 1px black;
+}
